@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Then
+import SnapKit
+import RxDataSources
+import RxSwiftExtensions
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK Window
     var window: UIWindow?
     public private(set) lazy var navigationController = UINavigationController(rootViewController: self.rootViewController)
-    public private(set) lazy var rootViewController: UIViewController = MainViewController()
+    public private(set) lazy var rootViewController: UIViewController = MainViewController(reactor: MainViewReactor(sampleService: SampleService()))
     
     private func setupWindow() {
         window = UIWindow(frame: UIScreen.main.bounds)

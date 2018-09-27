@@ -11,6 +11,13 @@
 		60259E4B215CDE27001D15AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60259E4A215CDE27001D15AA /* Assets.xcassets */; };
 		60259E4E215CDE27001D15AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60259E4C215CDE27001D15AA /* LaunchScreen.storyboard */; };
 		60259E58215CDF41001D15AA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60259E57215CDF41001D15AA /* MainViewController.swift */; };
+		60259E5B215CE0AA001D15AA /* MainViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60259E5A215CE0AA001D15AA /* MainViewReactor.swift */; };
+		60259E5F215CE37B001D15AA /* SampleTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60259E5E215CE37B001D15AA /* SampleTitleCell.swift */; };
+		60259E61215CE39B001D15AA /* SampleTitleCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60259E60215CE39B001D15AA /* SampleTitleCellReactor.swift */; };
+		60259E64215CE3ED001D15AA /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60259E63215CE3ED001D15AA /* Sample.swift */; };
+		60259E68215CE6BE001D15AA /* MainSampleSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60259E67215CE6BE001D15AA /* MainSampleSection.swift */; };
+		60259E6B215CEDAB001D15AA /* SampleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60259E6A215CEDAB001D15AA /* SampleService.swift */; };
+		60259E6E215CEDF8001D15AA /* Paging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60259E6D215CEDF8001D15AA /* Paging.swift */; };
 		FAD13FC76B7A9AF47119CAC1 /* Pods_ReactorKitSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A2821D8AD83B26CEE61DF8 /* Pods_ReactorKitSample.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,6 +29,13 @@
 		60259E4D215CDE27001D15AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60259E4F215CDE27001D15AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60259E57215CDF41001D15AA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		60259E5A215CE0AA001D15AA /* MainViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewReactor.swift; sourceTree = "<group>"; };
+		60259E5E215CE37B001D15AA /* SampleTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTitleCell.swift; sourceTree = "<group>"; };
+		60259E60215CE39B001D15AA /* SampleTitleCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTitleCellReactor.swift; sourceTree = "<group>"; };
+		60259E63215CE3ED001D15AA /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
+		60259E67215CE6BE001D15AA /* MainSampleSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSampleSection.swift; sourceTree = "<group>"; };
+		60259E6A215CEDAB001D15AA /* SampleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleService.swift; sourceTree = "<group>"; };
+		60259E6D215CEDF8001D15AA /* Paging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paging.swift; sourceTree = "<group>"; };
 		92A2821D8AD83B26CEE61DF8 /* Pods_ReactorKitSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactorKitSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A797F5B573DEEA4540090D /* Pods-ReactorKitSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactorKitSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReactorKitSample/Pods-ReactorKitSample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,7 +74,11 @@
 			isa = PBXGroup;
 			children = (
 				60259E43215CDE25001D15AA /* AppDelegate.swift */,
-				60259E55215CDF30001D15AA /* Views */,
+				60259E6C215CEDEE001D15AA /* Type */,
+				60259E69215CED94001D15AA /* Services */,
+				60259E62215CE3E2001D15AA /* Models */,
+				60259E5C215CE32F001D15AA /* Views */,
+				60259E59215CE088001D15AA /* ViewControllers */,
 				60259E4A215CDE27001D15AA /* Assets.xcassets */,
 				60259E4C215CDE27001D15AA /* LaunchScreen.storyboard */,
 				60259E4F215CDE27001D15AA /* Info.plist */,
@@ -68,20 +86,79 @@
 			path = ReactorKitSample;
 			sourceTree = "<group>";
 		};
-		60259E55215CDF30001D15AA /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				60259E56215CDF36001D15AA /* Main */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		60259E56215CDF36001D15AA /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				60259E57215CDF41001D15AA /* MainViewController.swift */,
+				60259E5A215CE0AA001D15AA /* MainViewReactor.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		60259E59215CE088001D15AA /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				60259E56215CDF36001D15AA /* Main */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		60259E5C215CE32F001D15AA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				60259E5D215CE333001D15AA /* Main */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		60259E5D215CE333001D15AA /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				60259E5E215CE37B001D15AA /* SampleTitleCell.swift */,
+				60259E60215CE39B001D15AA /* SampleTitleCellReactor.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		60259E62215CE3E2001D15AA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				60259E63215CE3ED001D15AA /* Sample.swift */,
+				60259E65215CE6A8001D15AA /* Sections */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		60259E65215CE6A8001D15AA /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				60259E66215CE6B4001D15AA /* Main */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		60259E66215CE6B4001D15AA /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				60259E67215CE6BE001D15AA /* MainSampleSection.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		60259E69215CED94001D15AA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				60259E6A215CEDAB001D15AA /* SampleService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		60259E6C215CEDEE001D15AA /* Type */ = {
+			isa = PBXGroup;
+			children = (
+				60259E6D215CEDF8001D15AA /* Paging.swift */,
+			);
+			path = Type;
 			sourceTree = "<group>";
 		};
 		83D0C38CC77D934C97154A8D /* Pods */ = {
@@ -200,19 +277,31 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ReactorKitSample/Pods-ReactorKitSample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactorKit/ReactorKit.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxOptional/RxOptional.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwiftExtensions/RxSwiftExtensions.framework",
+				"${BUILT_PRODUCTS_DIR}/RxViewController/RxViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactorKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxOptional.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftExtensions.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -226,7 +315,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60259E6E215CEDF8001D15AA /* Paging.swift in Sources */,
+				60259E61215CE39B001D15AA /* SampleTitleCellReactor.swift in Sources */,
+				60259E68215CE6BE001D15AA /* MainSampleSection.swift in Sources */,
+				60259E64215CE3ED001D15AA /* Sample.swift in Sources */,
+				60259E5F215CE37B001D15AA /* SampleTitleCell.swift in Sources */,
 				60259E44215CDE25001D15AA /* AppDelegate.swift in Sources */,
+				60259E6B215CEDAB001D15AA /* SampleService.swift in Sources */,
+				60259E5B215CE0AA001D15AA /* MainViewReactor.swift in Sources */,
 				60259E58215CDF41001D15AA /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
