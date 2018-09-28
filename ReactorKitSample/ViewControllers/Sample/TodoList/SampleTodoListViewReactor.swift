@@ -14,24 +14,30 @@ class SampleTodoListViewReactor: Reactor {
     
     enum Action {
         case refresh
-//        case loadMore
+        case loadMore
     }
     
     enum Mutation {
         case setRefreshing(Bool)
         case setLoading(Bool)
         case setTodos([Todo], pagingMeta: PagingMetaType?)
-//        case appendTodos([Todo])
+        case appendTodos([Todo], pagingMeta: PagingMetaType?)
+        case setIsLoadedLastItem(Bool)
     }
     
     struct State: Then {
         var pagingMeta: PagingMetaType?
         var isRefreshing: Bool = false
         var isLoading: Bool = false
+        var isLoadedLastItem: Bool = false
         var sections: [TodoSection] = []
     }
     
-    let initialState = State.init(pagingMeta: PagingMeta(start: 0, limit: 10), isRefreshing: false, isLoading: false, sections: [])
+    let initialState = State(pagingMeta: PagingMeta(start: 0, limit: 100),
+                             isRefreshing: false,
+                             isLoading: false,
+                             isLoadedLastItem: false,
+                             sections: [])
     
     // MARK Service
     let service: JSONPlaceholderServiceType
@@ -58,17 +64,42 @@ class SampleTodoListViewReactor: Reactor {
                             pagingMeta?.start += todos.count
                             return (todos, pagingMeta)
                         }
-                    case let .error(error):
-                        print(error)
                     default: break
                     }
                     return nil
                 })
-                .filterNil()
                 .map({ result -> Mutation in
+                    guard let result = result else { return .setIsLoadedLastItem(true) }
                     return .setTodos(result.0, pagingMeta: result.1)
                 })
             return .concat([startRefreshing, setTodos, endRefreshing])
+        case .loadMore:
+            guard !self.currentState.isLoadedLastItem,
+                !self.currentState.isRefreshing,
+                !self.currentState.isLoading,
+                self.currentState.sections.count > 0,
+                var pagingMeta = self.currentState.pagingMeta
+                else { return .empty() }
+            let startLoading = Observable<Mutation>.just(.setLoading(true))
+            let endLoading = Observable<Mutation>.just(.setLoading(false))
+            let appendTodos = self.service.todos(start: pagingMeta.start, limit: pagingMeta.limit)
+                .withLatestFrom(state.map({ $0.pagingMeta }), resultSelector: { (result, pagingMeta) -> ([Todo], PagingMetaType?)? in
+                    switch result {
+                    case let .success(todos):
+                        if todos.count > 0 {
+                            var pagingMeta = pagingMeta
+                            pagingMeta?.start += todos.count
+                            return (todos, pagingMeta)
+                        }
+                    default: break
+                    }
+                    return nil
+                })
+                .map({ result -> Mutation in
+                    guard let result = result else { return .setIsLoadedLastItem(true) }
+                    return .appendTodos(result.0, pagingMeta: result.1)
+                })
+            return .concat([startLoading, appendTodos, endLoading])
         }
     }
     
@@ -77,7 +108,8 @@ class SampleTodoListViewReactor: Reactor {
         switch mutation {
         case let .setRefreshing(isRefreshing):
             let isEmpty = state.sections.first?.items.isEmpty == true
-            state.isRefreshing = isRefreshing && !isEmpty
+            let isRefreshing = isRefreshing && !isEmpty
+            state.isRefreshing = isRefreshing
             return state
         case let .setLoading(isLoading):
             state.isLoading = isLoading
@@ -88,6 +120,20 @@ class SampleTodoListViewReactor: Reactor {
                 .map({ TodoSection.Value.todoTitle($0) })
             state.sections = [.todos(todoTitleRows)]
             state.pagingMeta = pagingMeta
+            return state
+        case let .appendTodos(todos, pagingMeta):
+            let newTodoTitleRows = todos
+                .map({ TodoTitleCellReactor(todo: $0) })
+                .map({ TodoSection.Value.todoTitle($0) })
+            let todoTitleRows = state.sections[0].items + newTodoTitleRows
+            state.sections = [.todos(todoTitleRows)]
+            state.pagingMeta = pagingMeta
+            return state
+        case let .setIsLoadedLastItem(isLoadedLastItem):
+            state.isLoadedLastItem = isLoadedLastItem
+            if isLoadedLastItem {
+                state.pagingMeta = nil
+            }
             return state
         }
     }

@@ -45,6 +45,7 @@ class SampleTodoListViewController: UIViewController, View {
         rx.viewDidLoad.map({ Reactor.Action.refresh })
             .bind(to: action)
             .disposed(by: disposeBag)
+        bindTableView(action: action)
     }
     
     // MARK View
@@ -77,5 +78,12 @@ class SampleTodoListViewController: UIViewController, View {
     
     private func bindTableView(state: Observable<SampleTodoListViewReactor.State>) {
         state.map({ $0.sections }).bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+    }
+    
+    private func bindTableView(action: ActionSubject<SampleTodoListViewReactor.Action>) {
+        tableView.rx.isReachedBottom
+            .map({ SampleTodoListViewReactor.Action.loadMore })
+            .bind(to: action)
+            .disposed(by: disposeBag)
     }
 }
