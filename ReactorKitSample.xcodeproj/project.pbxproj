@@ -98,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				60259E43215CDE25001D15AA /* AppDelegate.swift */,
-				60259E6C215CEDEE001D15AA /* Type */,
+				60259E6C215CEDEE001D15AA /* Types */,
 				60259E69215CED94001D15AA /* Services */,
 				60259E62215CE3E2001D15AA /* Models */,
 				60259E5C215CE32F001D15AA /* Views */,
@@ -184,14 +184,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		60259E6C215CEDEE001D15AA /* Type */ = {
+		60259E6C215CEDEE001D15AA /* Types */ = {
 			isa = PBXGroup;
 			children = (
 				60259E6D215CEDF8001D15AA /* Paging.swift */,
 				60259E8C215DCC70001D15AA /* Result.swift */,
 				60259E7F215DC8F6001D15AA /* Meta */,
 			);
-			path = Type;
+			path = Types;
 			sourceTree = "<group>";
 		};
 		60259E6F215DC156001D15AA /* Sample */ = {
