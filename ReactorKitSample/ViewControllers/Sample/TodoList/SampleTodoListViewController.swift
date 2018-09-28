@@ -85,7 +85,7 @@ class SampleTodoListViewController: UIViewController, View {
     
     private func bindTableView(action: ActionSubject<SampleTodoListViewReactor.Action>) {
         tableView.rx.isReachedBottom
-            .map({ SampleTodoListViewReactor.Action.loadMore })
+            .map({ Reactor.Action.loadMore })
             .bind(to: action)
             .disposed(by: disposeBag)
     }

@@ -88,7 +88,7 @@ class MainViewController: UIViewController, View {
     
     private func bindTableView(action: ActionSubject<MainViewReactor.Action>) {
         tableView.rx.modelSelected(MainSampleSection.Value.self)
-            .map({ MainViewReactor.Action.selectSample($0) })
+            .map({ Reactor.Action.selectSample($0) })
             .bind(to: action)
             .disposed(by: disposeBag)
     }
