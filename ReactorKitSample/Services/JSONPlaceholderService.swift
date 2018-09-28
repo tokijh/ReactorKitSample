@@ -18,9 +18,6 @@ class JSONPlaceholderService: JSONPlaceholderServiceType {
     func todos(start: Int, limit: Int) -> Observable<Result<[Todo]>> {
         let token = JSONPlaceholderProvider.todos(start: start, limit: limit)
         return JSONPlaceholderService.provider.rx.request(token)
-            .do(onSuccess: { (response) in
-                print(try response.mapString())
-            })
             .map([Todo].self)
             .map({ Result<[Todo]>.success($0) })
             .catchError({ Single.just(Result<[Todo]>.error($0)) })
