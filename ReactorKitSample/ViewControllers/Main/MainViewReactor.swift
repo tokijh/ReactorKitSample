@@ -13,12 +13,16 @@ class MainViewReactor: Reactor {
     
     enum Action {
         case refresh
+        case selectSample(MainSampleSection.Value)
+        case pushingVC
     }
     
     enum Mutation {
         case setRefreshing(Bool)
         case setLoading(Bool)
         case setSamples([Sample], nextSample: Sample?)
+        case selectSample(MainSampleSection.Value)
+        case pushVC(UIViewController)
     }
     
     struct State {
@@ -26,6 +30,7 @@ class MainViewReactor: Reactor {
         var isLoading: Bool = false
         var nextSample: Sample?
         var sections: [MainSampleSection] = []
+        var pushingVC: UIViewController?
     }
     
     let initialState = State()
@@ -50,6 +55,11 @@ class MainViewReactor: Reactor {
                     return .setSamples(list, nextSample: list.last)
                 })
             return .concat([startRefreshing, setSamples, endRefreshing])
+        case let .selectSample(section):
+            return Observable.just(.selectSample(section))
+        case .pushingVC:
+            guard let vc = self.currentState.pushingVC else { return .empty() }
+            return Observable.just(.pushVC(vc))
         }
     }
     
@@ -69,6 +79,15 @@ class MainViewReactor: Reactor {
                 .map({ MainSampleSection.Value.sampleTitle($0) })
             state.sections = [.samples(sampleTitleRows)]
             state.nextSample = nextSample
+            return state
+        case let .selectSample(section):
+            switch section {
+            case let .sampleTitle(reactor):
+                state.pushingVC = SampleTodoListViewController(reactor: SampleTodoListViewReactor(service: JSONPlaceholderService()))
+            }
+            return state
+        case let .pushVC(vc):
+//            state.pushingVC = vc
             return state
         }
     }

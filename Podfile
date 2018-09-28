@@ -11,6 +11,7 @@ target 'ReactorKitSample' do
   pod 'RxOptional'
   pod 'RxDataSources'
   pod 'RxSwiftExtensions'
+  pod 'Moya/RxSwift'
   pod 'ReactorKit'
   pod 'Then'
   pod 'SnapKit'

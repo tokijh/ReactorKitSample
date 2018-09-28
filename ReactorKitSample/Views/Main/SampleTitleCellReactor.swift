@@ -8,16 +8,9 @@
 
 import ReactorKit
 
-class SampleTitleCellReactor: Reactor {
-    typealias Action = NoAction
-    
-    struct State {
-        var title: String
-    }
-    
-    let initialState: State
-    
+class SampleTitleCellReactor: TitleCellReactor {
     init(sample: Sample) {
+        super.init()
         initialState = State(title: sample.title)
     }
 }

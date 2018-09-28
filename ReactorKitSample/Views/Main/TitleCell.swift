@@ -1,5 +1,5 @@
 //
-//  SampleTitleCell.swift
+//  TitleCell.swift
 //  ReactorKitSample
 //
 //  Created by 윤중현 on 2018. 9. 27..
@@ -10,7 +10,7 @@ import UIKit
 import ReactorKit
 import RxSwift
 
-class SampleTitleCell: UITableViewCell, View {
+class TitleCell: UITableViewCell, View {
     // MARK DisposeBag
     var disposeBag = DisposeBag()
     
@@ -29,11 +29,11 @@ class SampleTitleCell: UITableViewCell, View {
     }
     
     // MARK Reactor Binder
-    func bind(reactor: SampleTitleCellReactor) {
+    func bind(reactor: TitleCellReactor) {
         bind(state: reactor.state)
     }
     
-    private func bind(state: Observable<SampleTitleCellReactor.State>) {
+    private func bind(state: Observable<TitleCellReactor.State>) {
         bindTitleLabel(state: state)
     }
     
@@ -52,7 +52,7 @@ class SampleTitleCell: UITableViewCell, View {
     // MARK Title Label
     public private(set) lazy var titlelabel: UILabel = UILabel()
     
-    private func bindTitleLabel(state: Observable<SampleTitleCellReactor.State>) {
+    private func bindTitleLabel(state: Observable<TitleCellReactor.State>) {
         state.map({ $0.title }).bind(to: titlelabel.rx.text).disposed(by: disposeBag)
     }
 }

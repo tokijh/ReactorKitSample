@@ -8,7 +8,7 @@
 
 import RxSwift
 
-protocol SampleServiceType {
+protocol SampleServiceType: ServiceType {
     func samples(paging: Paging<Sample>) -> Single<[Sample]>
 }
 

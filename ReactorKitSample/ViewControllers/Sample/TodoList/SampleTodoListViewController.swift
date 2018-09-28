@@ -1,8 +1,8 @@
 //
-//  MainViewController.swift
+//  SampleTodoListViewController.swift
 //  ReactorKitSample
 //
-//  Created by 윤중현 on 2018. 9. 27..
+//  Created by 윤중현 on 2018. 9. 28..
 //  Copyright © 2018년 tokijh. All rights reserved.
 //
 
@@ -12,12 +12,12 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class MainViewController: UIViewController, View {
+class SampleTodoListViewController: UIViewController, View {
     // MARK DisposeBag
     var disposeBag = DisposeBag()
     
     // MARK Life cycle
-    init(reactor: MainViewReactor) {
+    init(reactor: SampleTodoListViewReactor) {
         super.init(nibName: nil, bundle: nil)
         self.reactor = reactor
         setup()
@@ -32,26 +32,19 @@ class MainViewController: UIViewController, View {
     }
     
     // MARK Reactor Binder
-    func bind(reactor: MainViewReactor) {
+    func bind(reactor: SampleTodoListViewReactor) {
         bind(state: reactor.state)
         bind(action: reactor.action)
     }
     
-    private func bind(state: Observable<MainViewReactor.State>) {
-        state.map({ $0.pushingVC })
-            .filterNil()
-            .subscribe(onNext: { [weak self] vc in
-                self?.navigationController?.pushViewController(vc, animated: true)
-            })
-            .disposed(by: disposeBag)
+    private func bind(state: Observable<SampleTodoListViewReactor.State>) {
         bindTableView(state: state)
     }
     
-    private func bind(action: ActionSubject<MainViewReactor.Action>) {
+    private func bind(action: ActionSubject<SampleTodoListViewReactor.Action>) {
         rx.viewDidLoad.map({ Reactor.Action.refresh })
             .bind(to: action)
             .disposed(by: disposeBag)
-        bindTableView(action: action)
     }
     
     // MARK View
@@ -71,9 +64,9 @@ class MainViewController: UIViewController, View {
     public private(set) lazy var tableView: UITableView = UITableView().then {
         $0.register(cell: TitleCell.self)
     }
-    private lazy var dataSource = RxTableViewSectionedReloadDataSource<MainSampleSection>(configureCell: { (dataSource, tableView, indexPath, item) -> UITableViewCell in
+    private lazy var dataSource = RxTableViewSectionedReloadDataSource<TodoSection>(configureCell: { (dataSource, tableView, indexPath, item) -> UITableViewCell in
         switch item {
-        case let .sampleTitle(reactor):
+        case let .todoTitle(reactor):
             if let cell = tableView.dequeue(TitleCell.self, indexPath: indexPath) {
                 cell.reactor = reactor
                 return cell
@@ -82,14 +75,7 @@ class MainViewController: UIViewController, View {
         return UITableViewCell()
     })
     
-    private func bindTableView(state: Observable<MainViewReactor.State>) {
+    private func bindTableView(state: Observable<SampleTodoListViewReactor.State>) {
         state.map({ $0.sections }).bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
-    }
-    
-    private func bindTableView(action: ActionSubject<MainViewReactor.Action>) {
-        tableView.rx.modelSelected(MainSampleSection.Value.self)
-            .map({ MainViewReactor.Action.selectSample($0) })
-            .bind(to: action)
-            .disposed(by: disposeBag)
     }
 }
