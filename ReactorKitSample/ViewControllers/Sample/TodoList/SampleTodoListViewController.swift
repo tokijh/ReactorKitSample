@@ -39,6 +39,7 @@ class SampleTodoListViewController: UIViewController, View {
     
     private func bind(state: Observable<SampleTodoListViewReactor.State>) {
         bindTableView(state: state)
+        bindRefreshControl(state: state)
     }
     
     private func bind(action: ActionSubject<SampleTodoListViewReactor.Action>) {
@@ -46,12 +47,14 @@ class SampleTodoListViewController: UIViewController, View {
             .bind(to: action)
             .disposed(by: disposeBag)
         bindTableView(action: action)
+        bindRefreshControl(action: action)
     }
     
     // MARK View
     private func setupView() {
         view.backgroundColor = UIColor.white
         layoutView()
+        setupRefreshControl()
     }
     
     private func layoutView() {
@@ -83,6 +86,27 @@ class SampleTodoListViewController: UIViewController, View {
     private func bindTableView(action: ActionSubject<SampleTodoListViewReactor.Action>) {
         tableView.rx.isReachedBottom
             .map({ SampleTodoListViewReactor.Action.loadMore })
+            .bind(to: action)
+            .disposed(by: disposeBag)
+    }
+    
+    // MARK RefreshControl
+    public private(set) lazy var refreshControl = UIRefreshControl()
+    
+    private func setupRefreshControl() {
+        tableView.addSubview(refreshControl)
+    }
+    
+    private func bindRefreshControl(state: Observable<SampleTodoListViewReactor.State>) {
+        state.map({ $0.isRefreshing })
+            .distinctUntilChanged()
+            .bind(to: refreshControl.rx.isRefreshing)
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindRefreshControl(action: ActionSubject<SampleTodoListViewReactor.Action>) {
+        refreshControl.rx.controlEvent(.valueChanged)
+            .map({ Reactor.Action.refresh })
             .bind(to: action)
             .disposed(by: disposeBag)
     }

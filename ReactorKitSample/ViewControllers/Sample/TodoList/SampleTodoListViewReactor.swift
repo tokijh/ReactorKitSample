@@ -51,17 +51,18 @@ class SampleTodoListViewReactor: Reactor {
         case .refresh:
             guard !self.currentState.isRefreshing,
                 !self.currentState.isLoading,
-                let pagingMeta = self.currentState.pagingMeta
+                let pagingMeta = self.initialState.pagingMeta
                 else { return .empty() }
             let startRefreshing = Observable<Mutation>.just(.setRefreshing(true))
             let endRefreshing = Observable<Mutation>.just(.setRefreshing(false))
+            let setIsLoadedLastItem = Observable<Mutation>.just(.setIsLoadedLastItem(false))
             let setTodos = service.todos(start: pagingMeta.start, limit: pagingMeta.limit)
-                .withLatestFrom(state.map({ $0.pagingMeta }), resultSelector: { (result, pagingMeta) -> ([Todo], PagingMetaType?)? in
+                .withLatestFrom(Observable.just(pagingMeta), resultSelector: { (result, pagingMeta) -> ([Todo], PagingMetaType?)? in
                     switch result {
                     case let .success(todos):
                         if todos.count > 0 {
                             var pagingMeta = pagingMeta
-                            pagingMeta?.start += todos.count
+                            pagingMeta.start += todos.count
                             return (todos, pagingMeta)
                         }
                     default: break
@@ -72,7 +73,7 @@ class SampleTodoListViewReactor: Reactor {
                     guard let result = result else { return .setIsLoadedLastItem(true) }
                     return .setTodos(result.0, pagingMeta: result.1)
                 })
-            return .concat([startRefreshing, setTodos, endRefreshing])
+            return .concat([startRefreshing, setIsLoadedLastItem, setTodos, endRefreshing])
         case .loadMore:
             guard !self.currentState.isLoadedLastItem,
                 !self.currentState.isRefreshing,
