@@ -31,6 +31,9 @@
 		60259E94215DEF77001D15AA /* TitleCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60259E93215DEF77001D15AA /* TitleCellReactor.swift */; };
 		60259E96215DF01A001D15AA /* TodoTitleCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60259E95215DF01A001D15AA /* TodoTitleCellReactor.swift */; };
 		60259E9B215E0C62001D15AA /* UIScrollView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60259E9A215E0C62001D15AA /* UIScrollView+Rx.swift */; };
+		6043B4B5216AECE700BD016D /* CollectionLoadmoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6043B4B4216AECE700BD016D /* CollectionLoadmoreViewController.swift */; };
+		6043B4B7216AED0000BD016D /* CollectionLoadmoreViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6043B4B6216AED0000BD016D /* CollectionLoadmoreViewReactor.swift */; };
+		6043B4B9216AEE3500BD016D /* TitleCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6043B4B8216AEE3500BD016D /* TitleCollectionCell.swift */; };
 		FAD13FC76B7A9AF47119CAC1 /* Pods_ReactorKitSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A2821D8AD83B26CEE61DF8 /* Pods_ReactorKitSample.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +65,9 @@
 		60259E93215DEF77001D15AA /* TitleCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCellReactor.swift; sourceTree = "<group>"; };
 		60259E95215DF01A001D15AA /* TodoTitleCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTitleCellReactor.swift; sourceTree = "<group>"; };
 		60259E9A215E0C62001D15AA /* UIScrollView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Rx.swift"; sourceTree = "<group>"; };
+		6043B4B4216AECE700BD016D /* CollectionLoadmoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionLoadmoreViewController.swift; sourceTree = "<group>"; };
+		6043B4B6216AED0000BD016D /* CollectionLoadmoreViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionLoadmoreViewReactor.swift; sourceTree = "<group>"; };
+		6043B4B8216AEE3500BD016D /* TitleCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionCell.swift; sourceTree = "<group>"; };
 		92A2821D8AD83B26CEE61DF8 /* Pods_ReactorKitSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactorKitSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A797F5B573DEEA4540090D /* Pods-ReactorKitSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactorKitSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReactorKitSample/Pods-ReactorKitSample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,6 +152,7 @@
 				60259E93215DEF77001D15AA /* TitleCellReactor.swift */,
 				60259E60215CE39B001D15AA /* SampleTitleCellReactor.swift */,
 				60259E95215DF01A001D15AA /* TodoTitleCellReactor.swift */,
+				6043B4B8216AEE3500BD016D /* TitleCollectionCell.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -201,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				60259E70215DC162001D15AA /* TodoList */,
+				6043B4B3216AECCC00BD016D /* CollectionLoadmore */,
 			);
 			path = Sample;
 			sourceTree = "<group>";
@@ -254,6 +262,15 @@
 				60259E9A215E0C62001D15AA /* UIScrollView+Rx.swift */,
 			);
 			path = Rx;
+			sourceTree = "<group>";
+		};
+		6043B4B3216AECCC00BD016D /* CollectionLoadmore */ = {
+			isa = PBXGroup;
+			children = (
+				6043B4B4216AECE700BD016D /* CollectionLoadmoreViewController.swift */,
+				6043B4B6216AED0000BD016D /* CollectionLoadmoreViewReactor.swift */,
+			);
+			path = CollectionLoadmore;
 			sourceTree = "<group>";
 		};
 		83D0C38CC77D934C97154A8D /* Pods */ = {
@@ -419,6 +436,7 @@
 				60259E6E215CEDF8001D15AA /* Paging.swift in Sources */,
 				60259E8D215DCC70001D15AA /* Result.swift in Sources */,
 				60259E61215CE39B001D15AA /* SampleTitleCellReactor.swift in Sources */,
+				6043B4B5216AECE700BD016D /* CollectionLoadmoreViewController.swift in Sources */,
 				60259E7A215DC3BD001D15AA /* JSONPlaceholderService.swift in Sources */,
 				60259E68215CE6BE001D15AA /* MainSampleSection.swift in Sources */,
 				60259E76215DC208001D15AA /* Todo.swift in Sources */,
@@ -431,6 +449,7 @@
 				60259E6B215CEDAB001D15AA /* SampleService.swift in Sources */,
 				60259E9B215E0C62001D15AA /* UIScrollView+Rx.swift in Sources */,
 				60259E74215DC1A2001D15AA /* SampleTodoListViewReactor.swift in Sources */,
+				6043B4B7216AED0000BD016D /* CollectionLoadmoreViewReactor.swift in Sources */,
 				60259E5B215CE0AA001D15AA /* MainViewReactor.swift in Sources */,
 				60259E81215DC902001D15AA /* PagingMeta.swift in Sources */,
 				60259E94215DEF77001D15AA /* TitleCellReactor.swift in Sources */,
@@ -438,6 +457,7 @@
 				60259E84215DC929001D15AA /* PagingMetaType.swift in Sources */,
 				60259E58215CDF41001D15AA /* MainViewController.swift in Sources */,
 				60259E8A215DCA7D001D15AA /* ServiceType.swift in Sources */,
+				6043B4B9216AEE3500BD016D /* TitleCollectionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,3 +11,13 @@ import Then
 class Sample: Then {
     var title: String = ""
 }
+
+extension Sample {
+    var viewController: UIViewController? {
+        switch title {
+        case "TodoList": return SampleTodoListViewController(reactor: SampleTodoListViewReactor(service: JSONPlaceholderService()))
+        case "CollectionLoadmore": return CollectionLoadmoreViewController(reactor: CollectionLoadmoreViewReactor(service: JSONPlaceholderService()))
+        default: return nil
+        }
+    }
+}

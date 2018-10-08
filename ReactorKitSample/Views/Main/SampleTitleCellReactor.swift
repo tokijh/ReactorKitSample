@@ -9,7 +9,9 @@
 import ReactorKit
 
 class SampleTitleCellReactor: TitleCellReactor {
+    var sample: Sample
     init(sample: Sample) {
+        self.sample = sample
         super.init()
         initialState = State(title: sample.title)
     }

@@ -78,7 +78,7 @@ class MainViewReactor: Reactor {
         case let .selectSample(section):
             switch section {
             case let .sampleTitle(reactor):
-                state.pushingVC = SampleTodoListViewController(reactor: SampleTodoListViewReactor(service: JSONPlaceholderService()))
+                state.pushingVC = reactor.sample.viewController
             }
             return state
         }

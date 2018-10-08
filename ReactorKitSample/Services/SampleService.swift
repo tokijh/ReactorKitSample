@@ -15,9 +15,8 @@ protocol SampleServiceType: ServiceType {
 class SampleService: SampleServiceType {
     func samples(paging: Paging<Sample>) -> Single<[Sample]> {
         return Single.just([
-            Sample().then { $0.title = "Sample 0" },
-            Sample().then { $0.title = "Sample 1" },
-            Sample().then { $0.title = "Sample 2" }
+            Sample().then { $0.title = "TodoList" },
+            Sample().then { $0.title = "CollectionLoadmore" }
         ])
     }
 }
