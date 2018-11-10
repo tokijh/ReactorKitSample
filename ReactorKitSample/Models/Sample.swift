@@ -17,6 +17,7 @@ extension Sample {
         switch title {
         case "TodoList": return SampleTodoListViewController(reactor: SampleTodoListViewReactor(service: JSONPlaceholderService()))
         case "CollectionLoadmore": return CollectionLoadmoreViewController(reactor: CollectionLoadmoreViewReactor(service: JSONPlaceholderService()))
+        case "Counter": return CounterViewController(reactor: CounterViewReactor())
         default: return nil
         }
     }

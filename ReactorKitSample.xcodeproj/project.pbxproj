@@ -31,6 +31,8 @@
 		60259E94215DEF77001D15AA /* TitleCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60259E93215DEF77001D15AA /* TitleCellReactor.swift */; };
 		60259E96215DF01A001D15AA /* TodoTitleCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60259E95215DF01A001D15AA /* TodoTitleCellReactor.swift */; };
 		60259E9B215E0C62001D15AA /* UIScrollView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60259E9A215E0C62001D15AA /* UIScrollView+Rx.swift */; };
+		60377AE52196D0BF0075BA1A /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60377AE42196D0BF0075BA1A /* CounterViewController.swift */; };
+		60377AE72196D0D70075BA1A /* CounterViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60377AE62196D0D70075BA1A /* CounterViewReactor.swift */; };
 		6043B4B5216AECE700BD016D /* CollectionLoadmoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6043B4B4216AECE700BD016D /* CollectionLoadmoreViewController.swift */; };
 		6043B4B7216AED0000BD016D /* CollectionLoadmoreViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6043B4B6216AED0000BD016D /* CollectionLoadmoreViewReactor.swift */; };
 		6043B4B9216AEE3500BD016D /* TitleCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6043B4B8216AEE3500BD016D /* TitleCollectionCell.swift */; };
@@ -65,6 +67,8 @@
 		60259E93215DEF77001D15AA /* TitleCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCellReactor.swift; sourceTree = "<group>"; };
 		60259E95215DF01A001D15AA /* TodoTitleCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTitleCellReactor.swift; sourceTree = "<group>"; };
 		60259E9A215E0C62001D15AA /* UIScrollView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Rx.swift"; sourceTree = "<group>"; };
+		60377AE42196D0BF0075BA1A /* CounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
+		60377AE62196D0D70075BA1A /* CounterViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewReactor.swift; sourceTree = "<group>"; };
 		6043B4B4216AECE700BD016D /* CollectionLoadmoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionLoadmoreViewController.swift; sourceTree = "<group>"; };
 		6043B4B6216AED0000BD016D /* CollectionLoadmoreViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionLoadmoreViewReactor.swift; sourceTree = "<group>"; };
 		6043B4B8216AEE3500BD016D /* TitleCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionCell.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 			children = (
 				60259E70215DC162001D15AA /* TodoList */,
 				6043B4B3216AECCC00BD016D /* CollectionLoadmore */,
+				60377AE32196D0AE0075BA1A /* Counter */,
 			);
 			path = Sample;
 			sourceTree = "<group>";
@@ -262,6 +267,15 @@
 				60259E9A215E0C62001D15AA /* UIScrollView+Rx.swift */,
 			);
 			path = Rx;
+			sourceTree = "<group>";
+		};
+		60377AE32196D0AE0075BA1A /* Counter */ = {
+			isa = PBXGroup;
+			children = (
+				60377AE42196D0BF0075BA1A /* CounterViewController.swift */,
+				60377AE62196D0D70075BA1A /* CounterViewReactor.swift */,
+			);
+			path = Counter;
 			sourceTree = "<group>";
 		};
 		6043B4B3216AECCC00BD016D /* CollectionLoadmore */ = {
@@ -440,10 +454,12 @@
 				60259E7A215DC3BD001D15AA /* JSONPlaceholderService.swift in Sources */,
 				60259E68215CE6BE001D15AA /* MainSampleSection.swift in Sources */,
 				60259E76215DC208001D15AA /* Todo.swift in Sources */,
+				60377AE52196D0BF0075BA1A /* CounterViewController.swift in Sources */,
 				60259E64215CE3ED001D15AA /* Sample.swift in Sources */,
 				60259E5F215CE37B001D15AA /* TitleCell.swift in Sources */,
 				60259E91215DEF2D001D15AA /* TodoSection.swift in Sources */,
 				60259E96215DF01A001D15AA /* TodoTitleCellReactor.swift in Sources */,
+				60377AE72196D0D70075BA1A /* CounterViewReactor.swift in Sources */,
 				60259E72215DC178001D15AA /* SampleTodoListViewController.swift in Sources */,
 				60259E44215CDE25001D15AA /* AppDelegate.swift in Sources */,
 				60259E6B215CEDAB001D15AA /* SampleService.swift in Sources */,

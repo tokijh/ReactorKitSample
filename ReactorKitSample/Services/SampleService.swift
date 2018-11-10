@@ -16,7 +16,8 @@ class SampleService: SampleServiceType {
     func samples(paging: Paging<Sample>) -> Single<[Sample]> {
         return Single.just([
             Sample().then { $0.title = "TodoList" },
-            Sample().then { $0.title = "CollectionLoadmore" }
+            Sample().then { $0.title = "CollectionLoadmore" },
+            Sample().then { $0.title = "Counter" }
         ])
     }
 }
